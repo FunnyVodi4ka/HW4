@@ -1,0 +1,66 @@
+.btn {
+    border-radius: 10px;
+    color: white;
+    transition: .2s linear;
+    background: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+}
+
+.edit {
+    background: #FFA500;
+}
+.edit:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #FFA500;
+}
+
+.cancel {
+    background: #1E90FF;
+}
+.cancel:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #1E90FF;
+}
+
+.add {
+    background: #006400;
+}
+.add:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #006400;
+}
+
+.delete {
+    background: #8B0000;
+}
+.delete:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #8B0000;
+}
+body {
+    font-size: 16px;
+}
+table {
+    border-radius: 10px;
+    border-spacing: 0;
+    border-collapse: collapse;
+    text-align: center;
+}
+th {
+    background: #BCEBDD;
+    color: black;
+    padding: 10px 20px;
+}
+th, td {
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    border-color: #BCEBDD;
+}
+th:first-child, td:first-child {
+    text-align: left;
+}
+td {
+    padding: 10px 20px;
+    background: white;
+}

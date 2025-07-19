@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<div th:switch="${users}">
+    <h2 th:case="null">Пользователей не найдено</h2>
+    <div th:case="*">
+        <h2>Список пользователей</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Имя пользователя</th>
+                <th>Email</th>
+                <th>Возраст</th>
+                <th>Создан</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.user_id}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.age}"></td>
+                <td th:text="${user.created_at}"></td>
+                <td><a th:href="@{user-update/{id}(id=${user.user_id})}" class="btn edit">Изменить</a></td>
+                <td><a th:href="@{user-delete/{id}(id=${user.user_id})}" onclick="return confirm('Вы уверены, что хотите удалить пользователя?')" class="btn delete">Удалить</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/user-create" class="btn add">Создать пользователя</a></p>
+</div>
+
+<style>
+    .btn {
+        border-radius: 10px;
+        color: white;
+        transition: .2s linear;
+        background: black;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        padding: 10px 20px;
+        cursor: pointer;
+        border: none;
+    }
+
+    .edit {
+        background: #FFA500;
+    }
+    .edit:hover {
+        box-shadow: 0 0 0 2px white, 0 0 0 4px #FFA500;
+    }
+
+    .add {
+        background: #006400;
+    }
+    .add:hover {
+        box-shadow: 0 0 0 2px white, 0 0 0 4px #006400;
+    }
+
+    .cancel {
+        background: #1E90FF;
+    }
+    .cancel:hover {
+        box-shadow: 0 0 0 2px white, 0 0 0 4px #1E90FF;
+    }
+
+    .delete {
+        background: #8B0000;
+    }
+    .delete:hover {
+        box-shadow: 0 0 0 2px white, 0 0 0 4px #8B0000;
+    }
+    body {
+        font-size: 16px;
+    }
+    table {
+        border-radius: 10px;
+        border-spacing: 0;
+        border-collapse: collapse;
+        text-align: center;
+    }
+    th {
+        background: #BCEBDD;
+        color: black;
+        padding: 10px 20px;
+    }
+    th, td {
+        border-style: solid;
+        border-width: 1px 1px 1px 1px;
+        border-color: #BCEBDD;
+    }
+    th:first-child, td:first-child {
+        text-align: left;
+    }
+    td {
+        padding: 10px 20px;
+        background: white;
+    }
+</style>
+</body>
+</html>
