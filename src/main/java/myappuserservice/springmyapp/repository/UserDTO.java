@@ -9,8 +9,6 @@ public class UserDTO {
     private int age;
     private Date created_at;
 
-    // Конструкторы, геттеры и сеттеры
-
     public UserDTO() {this.created_at = new java.util.Date();}
 
     public UserDTO(String name, String email, int age) {

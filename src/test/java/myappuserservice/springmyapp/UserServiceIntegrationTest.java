@@ -40,7 +40,6 @@ public class UserServiceIntegrationTest {
     @Test
     public void testFindUserById() {
         UserDTO foundUser = userService.findUserById(testUser.getUser_id());
-        //User foundUser = userService.findUserById(testUser.getUser_id());
         assertThat(foundUser).isNotNull();
         assertThat(foundUser.getName()).isEqualTo(testUser.getName());
     }
@@ -48,7 +47,6 @@ public class UserServiceIntegrationTest {
     @Test
     public void testFindAllUsers() {
         List<UserDTO> users = userService.findAllUsers();
-        //List<User> users = userService.findAllUsers();
         assertThat(users).isNotEmpty();
         assertThat(users.size()).isGreaterThan(0);
     }
@@ -56,13 +54,11 @@ public class UserServiceIntegrationTest {
     @Test
     public void testSaveUser() {
         UserDTO newUser = new UserDTO();
-        //User newUser = new User();
         newUser.setName("Jane Doe");
         newUser.setEmail("jane.doe@example.com");
         newUser.setAge(25);
 
         UserDTO savedUser = userService.saveUser(newUser);
-        //User savedUser = userService.saveUser(newUser);
         assertThat(savedUser).isNotNull();
         assertThat(savedUser.getName()).isEqualTo(newUser.getName());
         assertThat(savedUser.getEmail()).isEqualTo(newUser.getEmail());

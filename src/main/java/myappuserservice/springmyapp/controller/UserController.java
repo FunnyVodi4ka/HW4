@@ -24,45 +24,6 @@ public class UserController {
         this.userService = userService;
     }
 
-//    @GetMapping("/users")
-//    public String findAllUsers(Model model) {
-//        List<User> users = userService.findAllUsers();
-//        model.addAttribute("users", users);
-//        return "user-list";
-//    }
-//
-//    @GetMapping("/user-create")
-//    public String createUserForm(User user) {
-//        return "user-create";
-//    }
-//
-//    @PostMapping("/user-create")
-//    public String createUser(User user) {
-//        userService.saveUser(user);
-//        return "redirect:/users";
-//    }
-//
-//    @GetMapping("user-delete/{user_id}")
-//    public String deleteUser(@PathVariable("user_id") Long user_id) {
-//        userService.deleteById(user_id);
-//        return "redirect:/users";
-//    }
-//
-//    @GetMapping("/user-update/{user_id}")
-//    public String updateUserForm(@PathVariable("user_id") Long user_id, Model model) {
-//        User user = userService.findUserById(user_id);
-//        update_id = user.getUser_id();
-//        model.addAttribute("user", user);
-//        return "/user-update";
-//    }
-//
-//    @PostMapping("/user-update")
-//    public String updateUser(User user) {
-//        user.setUser_id(update_id);
-//        userService.saveUser(user);
-//        return "redirect:/users";
-//    }
-
     @GetMapping("/users")
     public String findAllUsers(Model model) {
         List<UserDTO> users = userService.findAllUsers();

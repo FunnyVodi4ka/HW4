@@ -45,10 +45,7 @@ class SpringmyappApplicationTests {
 		UserDTO user1 = new UserDTO("John Doe", "testmail@gmail.com", 27);
 		UserDTO user2 = new UserDTO("Jane T", "janemail@gmail.com", 24);
 
-//		User user1 = new User("John Doe", "testmail@gmail.com", 27);
-//		User user2 = new User("Jane T", "janemail@gmail.com", 24);
 		List<UserDTO> users = Arrays.asList(user1, user2);
-//		List<User> users = Arrays.asList(user1, user2);
 
 		when(userService.findAllUsers()).thenReturn(users);
 
@@ -67,7 +64,6 @@ class SpringmyappApplicationTests {
 				.andExpect(redirectedUrl("/users"));
 
 		verify(userService).saveUser(any(UserDTO.class));
-		//verify(userService).saveUser(any(User.class));
 	}
 
 	@Test
@@ -83,7 +79,6 @@ class SpringmyappApplicationTests {
 	@Test
 	public void testUpdateUserForm() throws Exception {
 		Long userId = 1L;
-//		User user = new User("John Doe", "testmail@gmail.com", 27);
 		UserDTO user = new UserDTO("John Doe", "testmail@gmail.com", 27);
 
 		when(userService.findUserById(userId)).thenReturn(user);
@@ -105,6 +100,5 @@ class SpringmyappApplicationTests {
 				.andExpect(redirectedUrl("/users"));
 
 		verify(userService).saveUser(any(UserDTO.class));
-		//verify(userService).saveUser(any(User.class));
 	}
 }

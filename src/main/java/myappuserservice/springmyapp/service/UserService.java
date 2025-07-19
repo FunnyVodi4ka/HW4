@@ -10,40 +10,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//@Service
-//public class UserService {
-//
-//    private Validation validation = new Validation();
-//
-//    private final UserRepository userRepository;
-//
-//    @Autowired
-//    public UserService(UserRepository userRepository) {
-//        this.userRepository = userRepository;
-//    }
-//
-//    public User findUserById(Long id) {
-//        if(validation.checkId(id.toString()))
-//            return userRepository.getOne(id);
-//        return null;
-//    }
-//
-//    public List<User> findAllUsers() {
-//        return userRepository.findAll();
-//    }
-//
-//    public User saveUser(User user) {
-//        if(validation.checkEmail(user.getEmail()) && validation.checkName(user.getName()) && validation.checkAge(user.getAge()))
-//            return userRepository.save(user);
-//        return null;
-//    }
-//
-//    public void deleteById(Long id) {
-//        if(validation.checkId(id.toString()))
-//            userRepository.deleteById(id);
-//    }
-//}
-
 @Service
 public class UserService {
 
@@ -89,7 +55,6 @@ public class UserService {
         }
     }
 
-    // Преобразование между User и UserDTO
     private UserDTO convertToDTO(User user) {
         if (user == null) {
             return null;
