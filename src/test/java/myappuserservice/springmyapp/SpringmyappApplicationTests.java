@@ -3,6 +3,8 @@ package myappuserservice.springmyapp;
 import myappuserservice.springmyapp.controller.UserController;
 import myappuserservice.springmyapp.model.User;
 import myappuserservice.springmyapp.repository.UserDTO;
+import myappuserservice.springmyapp.repository.UserRepository;
+import myappuserservice.springmyapp.service.EmailService;
 import myappuserservice.springmyapp.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,6 +31,12 @@ class SpringmyappApplicationTests {
 
 	@Mock
 	private UserService userService;
+
+	@Mock
+	private EmailService emailService;
+
+	@Mock
+	private UserDTO userDTO;
 
 	@Mock
 	private Model model;

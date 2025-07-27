@@ -1,9 +1,12 @@
 package myappuserservice.springmyapp.controller;
 
+import lombok.RequiredArgsConstructor;
 import myappuserservice.springmyapp.model.User;
 import myappuserservice.springmyapp.repository.UserDTO;
+import myappuserservice.springmyapp.service.EmailService;
 import myappuserservice.springmyapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,9 +22,12 @@ public class UserController {
 
     private final UserService userService;
 
+    private final EmailService emailService;
+
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, EmailService emailService) {
         this.userService = userService;
+        this.emailService = emailService;
     }
 
     @GetMapping("/users")
@@ -39,13 +45,26 @@ public class UserController {
     @PostMapping("/user-create")
     public String createUser(UserDTO user) {
         userService.saveUser(user);
+        this.sendMessageAdd(user);
         return "redirect:/users";
+    }
+
+    private void sendMessageAdd(UserDTO user) {
+        if(user != null)
+            emailService.sendEmail(user.getEmail(), "Здравствуйте! Ваш аккаунт на сайте был успешно создан.");
     }
 
     @GetMapping("user-delete/{user_id}")
     public String deleteUser(@PathVariable("user_id") Long user_id) {
+        UserDTO user = userService.findUserById(user_id);
         userService.deleteById(user_id);
+        this.sendMessageDelete(user);
         return "redirect:/users";
+    }
+
+    private void sendMessageDelete(UserDTO user) {
+        if(user != null)
+            emailService.sendEmail(user.getEmail(), "Здравствуйте! Ваш аккаунт был удалён.");
     }
 
     @GetMapping("/user-update/{user_id}")
