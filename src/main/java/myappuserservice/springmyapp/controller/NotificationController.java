@@ -1,5 +1,6 @@
 package myappuserservice.springmyapp.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import myappuserservice.springmyapp.model.UserNotification;
 import myappuserservice.springmyapp.service.EmailService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/notifications")
+@Tag(name = "Notification-Service", description = "Отправка Email при пользователям")
 public class NotificationController {
 
     private final EmailService emailService;
